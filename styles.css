@@ -1,14 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+/* Variables */
+:root {
+  --color-bg: #ffffff;
+  --color-primary: #1a1a1a;
+  --color-secondary: #666666;
+  --color-accent: #c59d5f;
+  --color-hover: #a67c52;
+}
+
 /* Reset y base */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background: #f5f5f7;
-  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f8f8f8;
+  color: var(--color-primary);
   line-height: 1.6;
   padding: 80px 20px 40px;
   min-height: 100vh;
@@ -17,97 +28,123 @@ body {
 /* Header fijo */
 header {
   position: fixed;
-  top: 0; left: 0; right: 0;
-  background: #222;
-  color: #f5f5f5;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-primary);
+  color: white;
   height: 60px;
   display: flex;
   align-items: center;
   padding: 0 30px;
   font-size: 1.5rem;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
-/* Contenedor obras */
+/* Contenedor de obras */
 #obras-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* Card obras */
-.obra-card, .obra-detail {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding: 20px;
+/* Card de obra */
+.obra-card {
+  background-color: var(--color-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .obra-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Imagenes */
-.obra-card img, .obra-detail img {
+.obra-card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
+  height: auto;
+  display: block;
 }
 
-.obra-card:hover img {
-  transform: scale(1.05);
+/* Contenido de la obra */
+.obra-card-content {
+  padding: 20px;
 }
 
-/* Títulos */
-h1, h2 {
-  color: #222;
-  margin-bottom: 15px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+.obra-card-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 10px;
 }
 
-/* Texto */
-p {
+.obra-card-content p {
   font-size: 1rem;
-  color: #555;
-  margin-bottom: 12px;
+  color: var(--color-secondary);
+  margin-bottom: 15px;
 }
 
-/* Link detalle */
-a {
+.obra-card-content a {
   display: inline-block;
+  padding: 10px 15px;
+  background-color: var(--color-accent);
+  color: #fff;
   text-decoration: none;
-  background: #0077cc;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: 600;
-  box-shadow: 0 3px 7px rgba(0,119,204,0.5);
   transition: background-color 0.3s ease;
 }
 
-a:hover {
-  background-color: #005fa3;
+.obra-card-content a:hover {
+  background-color: var(--color-hover);
 }
 
-/* Botón volver en detalle */
+/* Detalle de obra */
+.obra-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: var(--color-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.obra-detail h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.obra-detail p {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  margin-bottom: 15px;
+}
+
+.obra-detail img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+/* Botón volver */
 .volver-btn {
   display: inline-block;
   margin-bottom: 20px;
-  background: #eee;
-  color: #333;
+  background-color: #eeeeee;
+  color: var(--color-primary);
   padding: 8px 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -115,15 +152,24 @@ a:hover {
 }
 
 .volver-btn:hover {
-  background-color: #ddd;
+  background-color: #dddddd;
 }
 
-/* Responsive para móvil */
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 768px) {
   body {
-    padding: 70px 10px 30px;
+    padding: 70px 15px 30px;
   }
-  .obra-card img, .obra-detail img {
-    height: 150px;
+
+  #obras-container {
+    grid-template-columns: 1fr;
+  }
+
+  .obra-card-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .obra-card-content p {
+    font-size: 0.95rem;
   }
 }
