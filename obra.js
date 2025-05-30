@@ -1,42 +1,42 @@
-// Obtener el título de la obra desde la URL (?obra=NombreDeLaObra)
+// Obtener el parámetro 'obra' de la URL
 const params = new URLSearchParams(window.location.search);
-const obraTitle = params.get("obra");
+const obraName = decodeURIComponent(params.get("obra") || "");
 
-// Función para traer datos del JSON y mostrar detalle de la obra seleccionada
-function fetchObraDetails() {
-  fetch("obras.json")
-    .then(response => response.json())
-    .then(obras => {
-        const obra = obras.find(o => o.title === obraName);
-      if (obra) {
-        renderObraDetail(obra);
-      } else {
-        document.getElementById("main-container").innerHTML = "<h2>Obra no encontrada</h2>";
-      }
-    })
-    .catch(error => {
-      console.error("Error cargando el JSON:", error);
-      document.getElementById("main-container").innerHTML = "<h2>Error al cargar los datos.</h2>";
-    });
+// Función para normalizar texto (quita tildes y pasa a minúsculas)
+function normalize(text) {
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
-// Función para renderizar los detalles en el HTML
-function renderObraDetail(obra) {
-  const container = document.getElementById("main-container");
-  container.innerHTML = ""; // Limpia contenido previo
-  const div = document.createElement("div");
-  div.className = "obra-detail";
+// Cargar los datos desde el JSON
+fetch("obras.json")
+  .then(response => response.json())
+  .then(obras => {
+    // Buscar la obra que coincida
+    const obra = obras.find(o => normalize(o.title) === normalize(obraName));
 
-  div.innerHTML = `
-    <h2>${obra.title}</h2>
-    <img src="img/${obra.image}" alt="${obra.title}" />
-    <p><strong>Descripción:</strong> ${obra.description}</p>
-    <p><strong>Año:</strong> ${obra.year || "No disponible"}</p>
-    <p><strong>Técnica:</strong> ${obra.technique || "No disponible"}</p>
-    <p><strong>Precio:</strong> ${obra.price ? "$" + obra.price : "Consultar"}</p>
-  `;
-  container.appendChild(div);
-}
+    const container = document.getElementById("detalle-obra");
 
-// Ejecutar la función para mostrar los detalles cuando cargue la página
-fetchObraDetails();
+    if (obra) {
+      container.innerHTML = `
+        <h1>${obra.title}</h1>
+        <img src="img/${obra.image}" alt="${obra.title}" />
+        <p><strong>Año:</strong> ${obra.year}</p>
+        <p><strong>Técnica:</strong> ${obra.technique}</p>
+        <p><strong>Precio:</strong> USD ${obra.price}</p>
+        <p>${obra.description}</p>
+        <a href="index.html">Volver al inicio</a>
+      `;
+    } else {
+      container.innerHTML = `
+        <h2>Obra no encontrada</h2>
+        <a href="index.html">Volver al inicio</a>
+      `;
+    }
+  })
+  .catch(error => {
+    console.error("Error al cargar el archivo JSON:", error);
+    document.getElementById("detalle-obra").innerHTML = `
+      <h2>Error al cargar los datos</h2>
+      <a href="index.html">Volver al inicio</a>
+    `;
+  });
