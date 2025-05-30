@@ -1,6 +1,5 @@
-// Obtener el nombre de la obra desde la URL (?obra=Paisaje%20en%20otoño)
 const params = new URLSearchParams(window.location.search);
-const obraName = params.get("obra");
+const obraTitle = params.get("obra");
 
 function fetchObraDetails() {
   fetch("obras.json")
@@ -11,7 +10,7 @@ function fetchObraDetails() {
       return response.json();
     })
     .then(obras => {
-      const obra = obras.find(o => o.name === obraName);
+      const obra = obras.find(o => o.title === obraTitle);
       if (obra) {
         renderObraDetail(obra);
       } else {
@@ -28,8 +27,8 @@ function renderObraDetail(obra) {
   const container = document.getElementById("main-container");
   container.innerHTML = `
     <div class="obra-detalle">
-      <h2>${obra.name}</h2>
-      <img src="img/${obra.image}" width="400" alt="${obra.name}" />
+      <h2>${obra.title}</h2>
+      <img src="img/${obra.image}" width="400" alt="${obra.title}" />
       <p><strong>Descripción:</strong> ${obra.description}</p>
       <p><strong>Técnica:</strong> ${obra.technique}</p>
       <p><strong>Año:</strong> ${obra.year}</p>
