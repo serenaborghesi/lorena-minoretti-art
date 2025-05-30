@@ -1,36 +1,29 @@
 const params = new URLSearchParams(window.location.search);
 const obraTitle = params.get("obra");
 
-function fetchObraDetails() {
+async function fetchObraDetails() {
   if (!obraTitle) {
     mostrarError("No se especificó la obra");
     return;
   }
+  try {
+    const response = await fetch("obras.json");
+    if (!response.ok) throw new Error("No se pudo cargar el archivo JSON");
+    const obras = await response.json();
+    const obra = obras.find(o => 
+      o.title && obraTitle && 
+      o.title.normalize().toLowerCase() === obraTitle.normalize().toLowerCase()
+    );
 
-  fetch("obras.json")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("No se pudo cargar el archivo JSON");
-      }
-      return response.json();
-    })
-    .then(obras => {
-      const obra = obras.find(o => {
-        // Protegemos contra valores undefined
-        if (!o.title) return false;
-        return o.title.normalize() === obraTitle.normalize();
-      });
-
-      if (obra) {
-        renderObraDetail(obra);
-      } else {
-        mostrarError("Obra no encontrada");
-      }
-    })
-    .catch(error => {
-      console.error("Error al cargar el archivo JSON:", error);
-      mostrarError("Error al cargar los datos");
-    });
+    if (obra) {
+      renderObraDetail(obra);
+    } else {
+      mostrarError("Obra no encontrada");
+    }
+  } catch (error) {
+    console.error("Error al cargar el archivo JSON:", error);
+    mostrarError("Error al cargar los datos");
+  }
 }
 
 function renderObraDetail(obra) {
