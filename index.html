@@ -25,10 +25,10 @@
           const div = document.createElement("div");
           div.className = "obra-card";
           div.innerHTML = `
-            <h2>${obra.name}</h2>
-            <img src="img/${obra.image}" width="200" alt="${obra.name}" />
+            <h2>${obra.title}</h2>
+            <img src="img/${obra.image}" width="200" alt="${obra.title}" />
             <p>${obra.description}</p>
-            <a href="detalle.html?obra=${encodeURIComponent(obra.name)}">Ver más</a>
+            <a href="detalle.html?obra=${encodeURIComponent(obra.title)}">Ver más</a>
         `;
 
           container.appendChild(div);

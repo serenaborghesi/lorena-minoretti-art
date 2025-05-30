@@ -1,6 +1,6 @@
 [
   {
-    "title": "Paisaje en otoño",
+    "name": "Paisaje en otoño",
     "description": "Una pintura que captura los colores cálidos del otoño.",
     "year": 2022,
     "technique": "Óleo sobre lienzo",
@@ -8,7 +8,7 @@
     "image": "paisaje-otono.jpg"
   },
   {
-    "title": "Retrato abstracto",
+    "name": "Retrato abstracto",
     "description": "Obra que explora formas y colores en un retrato no tradicional.",
     "year": 2023,
     "technique": "Acrílico sobre tela",

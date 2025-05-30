@@ -7,7 +7,7 @@ function fetchObraDetails() {
   fetch("obras.json")
     .then(response => response.json())
     .then(obras => {
-      const obra = obras.find(o => o.title === obraTitle);
+        const obra = obras.find(o => o.title === obraName);
       if (obra) {
         renderObraDetail(obra);
       } else {
