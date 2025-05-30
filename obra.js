@@ -1,42 +1,49 @@
-// Obtener el parámetro 'obra' de la URL
+// Obtener el nombre de la obra desde la URL (?obra=Paisaje%20en%20otoño)
 const params = new URLSearchParams(window.location.search);
-const obraName = decodeURIComponent(params.get("obra") || "");
+const obraName = params.get("obra");
 
-// Función para normalizar texto (quita tildes y pasa a minúsculas)
-function normalize(text) {
-  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+function fetchObraDetails() {
+  fetch("obras.json")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("No se pudo cargar el archivo JSON");
+      }
+      return response.json();
+    })
+    .then(obras => {
+      const obra = obras.find(o => o.name === obraName);
+      if (obra) {
+        renderObraDetail(obra);
+      } else {
+        mostrarError("Obra no encontrada");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      mostrarError("Error al cargar los datos");
+    });
 }
 
-// Cargar los datos desde el JSON
-fetch("obras.json")
-  .then(response => response.json())
-  .then(obras => {
-    // Buscar la obra que coincida
-    const obra = obras.find(o => normalize(o.title) === normalize(obraName));
+function renderObraDetail(obra) {
+  const container = document.getElementById("main-container");
+  container.innerHTML = `
+    <div class="obra-detalle">
+      <h2>${obra.name}</h2>
+      <img src="img/${obra.image}" width="400" alt="${obra.name}" />
+      <p><strong>Descripción:</strong> ${obra.description}</p>
+      <p><strong>Técnica:</strong> ${obra.technique}</p>
+      <p><strong>Año:</strong> ${obra.year}</p>
+      <p><strong>Precio:</strong> $${obra.price}</p>
+    </div>
+  `;
+}
 
-    const container = document.getElementById("detalle-obra");
+function mostrarError(mensaje) {
+  const container = document.getElementById("main-container");
+  container.innerHTML = `
+    <h2>${mensaje}</h2>
+    <a href="index.html" class="volver-btn">Volver al inicio</a>
+  `;
+}
 
-    if (obra) {
-      container.innerHTML = `
-        <h1>${obra.title}</h1>
-        <img src="img/${obra.image}" alt="${obra.title}" />
-        <p><strong>Año:</strong> ${obra.year}</p>
-        <p><strong>Técnica:</strong> ${obra.technique}</p>
-        <p><strong>Precio:</strong> USD ${obra.price}</p>
-        <p>${obra.description}</p>
-        <a href="index.html">Volver al inicio</a>
-      `;
-    } else {
-      container.innerHTML = `
-        <h2>Obra no encontrada</h2>
-        <a href="index.html">Volver al inicio</a>
-      `;
-    }
-  })
-  .catch(error => {
-    console.error("Error al cargar el archivo JSON:", error);
-    document.getElementById("detalle-obra").innerHTML = `
-      <h2>Error al cargar los datos</h2>
-      <a href="index.html">Volver al inicio</a>
-    `;
-  });
+fetchObraDetails();
