@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 `;
 
+
+
   // Armar el HTML completo
   mainContainer.innerHTML = `
     ${carrusel}
