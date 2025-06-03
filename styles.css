@@ -160,3 +160,16 @@ img.img-fluid {
   height: 40px;
   opacity: 1 !important;
 }
+
+/* flechas de bootstrap */
+.carousel-control-prev-icon , .carousel-control-next-icon {
+    width: 10% !important; /* el important es para que  pueda sobreescribir la clase de bootstrap, sino nome lo toma*/
+}
+
+.carousel-control-prev-icon {
+    left: 1%; 
+}
+
+.carousel-control-next-icon {
+    right: 1%; 
+}
