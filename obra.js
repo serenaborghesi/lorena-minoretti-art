@@ -63,7 +63,7 @@ function renderObraDetail(obra) {
       </div>
     `
     : `
-      <img src="img/${obra.image}" class="d-block w-100 img-fluid mb-4" alt="${obra.title}" />
+      <img src="img/${obra.images}" class="d-block w-100 img-fluid mb-4" alt="${obra.title}" />
     `;
 
   container.innerHTML = `
