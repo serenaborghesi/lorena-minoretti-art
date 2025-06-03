@@ -194,31 +194,72 @@ img.img-fluid {
   background-size: 100% 100%;
 }
 
-/* lista de navegación */
-.nav-list .nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; 
-}
-
-.nav-list .nav li {
-    margin: 2rem 1rem;
-}
-
-.nav-list .nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.nav-list .nav a:hover {
-    text-decoration: underline;
-}
-
-
+/*hopla*/
 .section {
     padding: 2rem;
     text-align: center;
+}
+/*NUEVO*/
+
+/* Estilos generales del header */
+.menu-grande {
+  background-color: #333;
+  padding: 1rem 0;
+  color: white;
+}
+
+/* Contenedor de navegación */
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Título que simula el logo */
+.titulo-logo h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Lista de navegación */
+.nav {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+}
+
+.nav li a:hover {
+  text-decoration: underline;
+  color: #a2ff9e; /* Verde clarito al pasar el mouse */
+}
+
+/* Responsive: en pantallas grandes el header se ve en fila */
+@media (min-width: 768px) {
+  .nav-list {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .titulo-logo {
+    text-align: left;
+  }
+
+  .nav {
+    margin-top: 0;
+  }
 }
