@@ -15,23 +15,42 @@
     <div id="obras-container"></div>
   </main>
 
-  <script>
-    fetch("obras.json")
-      .then(response => response.json())
-      .then(obras => {
-        const container = document.getElementById("obras-container");
-        obras.forEach(obra => {
-          const div = document.createElement("div");
-          div.className = "obra-card";
-          div.innerHTML = `
-            <h2>${obra.title}</h2>
-            <img src="img/${obra.image}" width="200" alt="${obra.title}" />
-            <p>${obra.description}</p>
-            <a href="detalle.html?obra=${encodeURIComponent(obra.title)}">Ver más</a>
-          `;
-          container.appendChild(div);
+<script>
+  fetch("obras.json")
+    .then(response => response.json())
+    .then(obras => {
+      const container = document.getElementById("obras-container");
+      obras.forEach(obra => {
+        const div = document.createElement("div");
+        div.className = "obra-card";
+        
+        const titulo = document.createElement("h2");
+        titulo.textContent = obra.title;
+
+        const imagen = document.createElement("img");
+        imagen.src = "img/" + obra.image;
+        imagen.width = 200;
+        imagen.alt = obra.title;
+
+        const descripcion = document.createElement("p");
+        descripcion.textContent = obra.description;
+
+        const boton = document.createElement("button");
+        boton.textContent = "Ver más";
+        boton.addEventListener("click", () => {
+          localStorage.setItem("obraSeleccionada", JSON.stringify(obra));
+          window.location.href = "detalle.html";
         });
+
+        div.appendChild(titulo);
+        div.appendChild(imagen);
+        div.appendChild(descripcion);
+        div.appendChild(boton);
+
+        container.appendChild(div);
       });
-  </script>
+    });
+</script>
+
 </body>
 </html>
