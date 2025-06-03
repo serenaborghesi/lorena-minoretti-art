@@ -145,3 +145,11 @@ a:hover {
   object-fit: contain;
   height: 100%;
 }
+
+/* Limitar altura del carrusel */
+.carousel-item img,
+img.img-fluid {
+  max-height: 500px;
+  object-fit: contain;
+}
+
