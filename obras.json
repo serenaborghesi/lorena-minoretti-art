@@ -5,7 +5,9 @@
     "year": 2022,
     "technique": "Óleo sobre lienzo",
     "price": 1500,
-    "image": "paisaje-otono.jpg"
+    "image": "paisaje-otono.jpg",
+    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
+
   },
   {
     "title": "Retrato abstracto",
@@ -13,7 +15,9 @@
     "year": 2023,
     "technique": "Acrílico sobre tela",
     "price": 1200,
-    "image": "retrato-abstracto.jpg"
+    "image": "retrato-abstracto.jpg",
+    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
+
   },
   {
     "title": "TérrAq",
