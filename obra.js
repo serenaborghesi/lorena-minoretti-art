@@ -1,81 +1,47 @@
-const params = new URLSearchParams(window.location.search);
-const obraTitle = params.get("obra");
+document.addEventListener("DOMContentLoaded", () => {
+  const mainContainer = document.getElementById("main-container");
 
-async function fetchObraDetails() {
-  if (!obraTitle) {
-    mostrarError("No se especificó la obra");
+  // Traer la obra guardada en localStorage
+  const obra = JSON.parse(localStorage.getItem("obraSeleccionada"));
+
+  // Validación por si no se encuentra
+  if (!obra) {
+    mainContainer.innerHTML = "<p>No se encontró la obra seleccionada.</p>";
     return;
   }
 
-  try {
-    const response = await fetch("obras.json");
-    if (!response.ok) throw new Error("No se pudo cargar el archivo JSON");
-
-    const obras = await response.json();
-    const obra = obras.find(o =>
-      o.title && obraTitle &&
-      o.title.normalize().toLowerCase() === obraTitle.normalize().toLowerCase()
-    );
-
-    if (obra) {
-      renderObraDetail(obra);
-    } else {
-      mostrarError("Obra no encontrada");
-    }
-
-  } catch (error) {
-    console.error("Error al cargar el archivo JSON:", error);
-    mostrarError("Error al cargar los datos");
-  }
-}
-
-function renderObraDetail(obra) {
-  const container = document.getElementById("main-container");
-
-  let imagesHTML = '';
-
-  if (obra.images && obra.images.length > 0) {
-    imagesHTML = `
-      <div id="carouselObra" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          ${obra.images.map((img, i) => `
-            <div class="carousel-item ${i === 0 ? 'active' : ''}">
-              <img src="img/${img}" class="d-block w-100 img-fluid" alt="${obra.title} ${i + 1}">
-            </div>
-          `).join("")}
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselObra" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselObra" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
+  // Generar carrusel si hay imágenes
+  const carrusel = `
+    <div id="carouselObra" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        ${obra.images
+          .map((img, index) => {
+            return `
+              <div class="carousel-item ${index === 0 ? "active" : ""}">
+                <img src="imagenes/${img}" class="d-block w-100" style="max-height: 500px; object-fit: contain;" alt="Imagen ${index + 1}" />
+              </div>
+            `;
+          })
+          .join("")}
       </div>
-    `;
-  } else {
-    imagesHTML = `<img src="img/${obra.image}" class="d-block w-100 img-fluid mb-4" alt="${obra.title}">`;
-  }
-
-  container.innerHTML = `
-    <div class="obra-detalle container">
-      <h2 class="mb-3">${obra.title}</h2>
-      ${imagesHTML}
-      <p><strong>Descripción:</strong> ${obra.description}</p>
-      <p><strong>Técnica:</strong> ${obra.technique}</p>
-      <p><strong>Año:</strong> ${obra.year}</p>
-      <p><strong>Precio:</strong> $${obra.price}</p>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselObra" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselObra" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
     </div>
   `;
-}
 
-function mostrarError(mensaje) {
-  const container = document.getElementById("main-container");
-  container.innerHTML = `
-    <h2>${mensaje}</h2>
-    <a href="index.html" class="volver-btn">Volver al inicio</a>
+  // Armar el HTML completo
+  mainContainer.innerHTML = `
+    ${carrusel}
+    <h2>${obra.title}</h2>
+    <p><strong>Año:</strong> ${obra.year}</p>
+    <p><strong>Técnica:</strong> ${obra.technique}</p>
+    <p><strong>Precio:</strong> $${obra.price}</p>
+    <p>${obra.description}</p>
   `;
-}
-
-fetchObraDetails();
+});
