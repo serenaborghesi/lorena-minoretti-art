@@ -32,34 +32,36 @@ async function fetchObraDetails() {
 function renderObraDetail(obra) {
   const container = document.getElementById("main-container");
 
-  const sliderHTML = obra.images && obra.images.length > 0
-    ? `
-      <div id="obraCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+  let imagesHTML = '';
+
+  if (obra.images && obra.images.length > 0) {
+    imagesHTML = `
+      <div id="carouselObra" class="carousel slide mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
-          ${obra.images.map((img, index) => `
-            <div class="carousel-item ${index === 0 ? 'active' : ''}">
-              <img src="img/${img}" class="d-block w-100 img-fluid" alt="${obra.title} ${index + 1}">
+          ${obra.images.map((img, i) => `
+            <div class="carousel-item ${i === 0 ? 'active' : ''}">
+              <img src="img/${img}" class="d-block w-100 img-fluid" alt="${obra.title} ${i + 1}">
             </div>
           `).join("")}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#obraCarousel" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselObra" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Anterior</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#obraCarousel" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselObra" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Siguiente</span>
         </button>
       </div>
-    `
-    : `
-      <img src="img/${obra.image}" class="d-block w-100 img-fluid mb-4" alt="${obra.title}" />
     `;
+  } else {
+    imagesHTML = `<img src="img/${obra.image}" class="d-block w-100 img-fluid mb-4" alt="${obra.title}">`;
+  }
 
   container.innerHTML = `
     <div class="obra-detalle container">
       <h2 class="mb-3">${obra.title}</h2>
-      ${sliderHTML}
+      ${imagesHTML}
       <p><strong>Descripción:</strong> ${obra.description}</p>
       <p><strong>Técnica:</strong> ${obra.technique}</p>
       <p><strong>Año:</strong> ${obra.year}</p>
