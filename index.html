@@ -37,6 +37,7 @@
 
         const boton = document.createElement("button");
         boton.textContent = "Ver más";
+        boton.classList.add("volver-btn");  // clase para cambiar el css del boton
         boton.addEventListener("click", () => {
           localStorage.setItem("obraSeleccionada", JSON.stringify(obra));
           window.location.href = "detalle.html";
