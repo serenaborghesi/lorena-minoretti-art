@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .map((img, index) => {
             return `
               <div class="carousel-item ${index === 0 ? "active" : ""}">
-                <img src="imagenes/${img}" class="d-block w-100" style="max-height: 500px; object-fit: contain;" alt="Imagen ${index + 1}" />
+                <img src="img/${img}" class="d-block w-100" style="max-height: 500px; object-fit: contain;" alt="Imagen ${index + 1}" />
               </div>
             `;
           })
