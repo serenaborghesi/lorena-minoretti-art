@@ -173,3 +173,23 @@ img.img-fluid {
 .carousel-control-next-icon {
     right: 1%; 
 }
+
+.carousel-controls {
+  background-color: #298554da; /* verde */
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  filter: invert(1); /* hace que las flechas sean blancas en fondo verde */
+  width: 40px;
+  height: 40px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100% 100%;
+}
