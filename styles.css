@@ -60,6 +60,15 @@
   background-color: #388e3c;
 }
 
+header {
+  background-color: #388e3c; /* verde */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+
 /* Responsive ajustes */
 @media (max-width: 576px) {
   .galeria-grid {
