@@ -153,13 +153,6 @@ img.img-fluid {
   object-fit: contain;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1);
-  width: 40px;
-  height: 40px;
-  opacity: 1 !important;
-}
 
 /* flechas de bootstrap */
 /* FLECHAS BOOTSTRAP – estilo mejorado como en el CSS viejo */
@@ -183,20 +176,19 @@ img.img-fluid {
   right: 15px;
 }
 
-/* Opcional: si querés que se vean blancas */
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
+  background-color: rgba(41, 133, 84, 0.7); /* verde */
+  border-radius: 50%;
+  background-size: 100% 100%;
+  background-position: center;  
+  background-repeat: no-repeat;
   filter: invert(1); /* blanco */
+  width: 50px;
+  height: 50px;
 }
 
-
-.carousel-control-prev-icon {
-    left: 1%; 
-}
-
-.carousel-control-next-icon {
-    right: 1%; 
-}
 
 .carousel-controls {
   background-color: #298554da; /* verde */
@@ -305,11 +297,6 @@ img.img-fluid {
   color: #444;
 }
 
-.carousel-inner img {
-  height: 450px;
-  object-fit: cover;
-  border-radius: 10px;
-}
 
 .carousel-button {
   position: absolute;
@@ -331,4 +318,12 @@ img.img-fluid {
 
 .carousel-button.next {
   right: 10px;
+}
+
+.carousel-control-prev {
+  left: 15px; /* o el valor que prefieras */
+}
+
+.carousel-control-next {
+  right: 15px;
 }
