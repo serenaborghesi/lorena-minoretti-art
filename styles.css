@@ -310,3 +310,25 @@ img.img-fluid {
   object-fit: cover;
   border-radius: 10px;
 }
+
+.carousel-button {
+  position: absolute;
+  top: 65%; /* MÁS ABAJO QUE EL CENTRO */
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 24px;
+  border-radius: 50%;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
