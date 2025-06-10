@@ -162,9 +162,33 @@ img.img-fluid {
 }
 
 /* flechas de bootstrap */
-.carousel-control-prev-icon , .carousel-control-next-icon {
-    width: 10% !important; /* el important es para que  pueda sobreescribir la clase de bootstrap, sino nome lo toma*/
+/* FLECHAS BOOTSTRAP – estilo mejorado como en el CSS viejo */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(41, 133, 84, 0.7); /* tu verde del header */
+  border-radius: 50%;
+  background-size: 50% 50%;
+  background-position: center;  
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
 }
+
+/* Posición mejorada de las flechas */
+.carousel-control-prev {
+  left: 15px;
+}
+
+.carousel-control-next {
+  right: 15px;
+}
+
+/* Opcional: si querés que se vean blancas */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* blanco */
+}
+
 
 .carousel-control-prev-icon {
     left: 1%; 
