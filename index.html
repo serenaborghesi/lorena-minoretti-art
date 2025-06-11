@@ -84,8 +84,8 @@
         const titulo = document.createElement("h3");
         titulo.textContent = obra.title;
 
-        const descripcion = document.createElement("p");
-        descripcion.textContent = obra.description;
+        const precio = document.createElement("p");
+        precio.textContent = obra.precio;
 
         const boton = document.createElement("button");
         boton.textContent = "Ver más";
@@ -97,7 +97,7 @@
 
         card.appendChild(imagen);
         card.appendChild(titulo);
-        card.appendChild(descripcion);
+        card.appendChild(precio);
         card.appendChild(boton);
         container.appendChild(card);
       });
