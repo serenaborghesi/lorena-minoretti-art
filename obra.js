@@ -1,52 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const mainContainer = document.getElementById("main-container");
+  const grilla = document.getElementById("grilla-obras");
+  if (!grilla) return;
 
-  // Traer la obra guardada en localStorage
-  const obra = JSON.parse(localStorage.getItem("obraSeleccionada"));
+  grilla.innerHTML = "";
 
-  // Validación por si no se encuentra
-  if (!obra) {
-    mainContainer.innerHTML = "<p>No se encontró la obra seleccionada.</p>";
-    return;
-  }
+  const obras = [
+    {
+      id: 1,
+      nombre: "Abstracción Verde",
+      precio: "$8.000",
+      descripcion: "Obra en acuarela inspirada en la naturaleza.",
+      tamano: "30x40 cm",
+      imagenes: [
+        "img/obra1a.jpg",
+        "img/obra1b.jpg"
+      ]
+    },
+    {
+      id: 2,
+      nombre: "Cielo Turquesa",
+      precio: "$10.000",
+      descripcion: "Tonos celestes y turquesas en una composición aérea.",
+      tamano: "40x50 cm",
+      imagenes: [
+        "img/obra2a.jpg",
+        "img/obra2b.jpg"
+      ]
+    },
+    {
+      id: 3,
+      nombre: "Horizonte Acuático",
+      precio: "$9.500",
+      descripcion: "Evocación del mar con acuarelas suaves.",
+      tamano: "35x45 cm",
+      imagenes: [
+        "img/obra3a.jpg",
+        "img/obra3b.jpg"
+      ]
+    }
+  ];
 
-  // Generar carrusel si hay imágenes
- const carrusel = `
-  <div id="carouselObra" class="carousel slide mb-4" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      ${obra.images
-        .map((img, index) => {
-          return `
-            <div class="carousel-item ${index === 0 ? "active" : ""}">
-              <img src="img/${img}" class="d-block w-100" style="max-height: 500px; object-fit: contain;" alt="Imagen ${index + 1}" />
-            </div>
-          `;
-        })
-        .join("")}
-    </div>
-
-    <div class="carousel-controls">
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselObra" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselObra" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-    </div>
-  </div>
-`;
-
-
-
-  // Armar el HTML completo
-  mainContainer.innerHTML = `
-    ${carrusel}
-    <h2>${obra.title}</h2>
-    <p><strong>Año:</strong> ${obra.year}</p>
-    <p><strong>Técnica:</strong> ${obra.technique}</p>
-    <p><strong>Precio:</strong> $${obra.price}</p>
-    <p>${obra.description}</p>
-  `;
+  obras.forEach((obra) => {
+    grilla.innerHTML += `
+      <div class="obra-card">
+        <img src="${obra.imagenes[0]}" alt="${obra.nombre}" />
+        <div class="obra-info">
+          <h3>${obra.nombre}</h3>
+          <p class="precio">${obra.precio}</p>
+          <a class="ver-mas" href="obra.html?id=${obra.id}">Ver más</a>
+        </div>
+      </div>
+    `;
+  });
 });
