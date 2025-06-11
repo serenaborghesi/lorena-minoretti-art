@@ -58,52 +58,51 @@
 
   <section>
     
-  <main class="container py-4">
-    <h2 class="text-center mb-4">Obras Destacadas</h2>
-  <div id="obras-container" class="galeria-grid"></div>
-  </main>
 
-  <script>
-    fetch("obras.json")
-      .then(response => response.json())
-      .then(obras => {
-        const container = document.getElementById("obras-container");
-        obras.forEach(obra => {
-          const col = document.createElement("div");
-          col.className = "col-sm-12 col-md-6 col-lg-4 d-flex";
+<main>
+  <h2 align="center">OBRAS DESTACADAS</h2>
+  <div class="contenedor-obras column" id="obras-container"></div>
+</main>
 
-          const div = document.createElement("div");
-          div.className = "obra-card";
 
-          const titulo = document.createElement("h3");
-          titulo.textContent = obra.title;
-
-          const imagen = document.createElement("img");
-          imagen.src = "img/" + obra.image;
-          imagen.alt = obra.title;
-
-          const descripcion = document.createElement("p");
-          descripcion.textContent = obra.description;
-
-          const boton = document.createElement("button");
-          boton.textContent = "Ver más";
-          boton.classList.add("volver-btn");
-          boton.addEventListener("click", () => {
-            localStorage.setItem("obraSeleccionada", JSON.stringify(obra));
-            window.location.href = "detalle.html";
-          });
-
-          div.appendChild(titulo);
-          div.appendChild(imagen);
-          div.appendChild(descripcion);
-          div.appendChild(boton);
-          col.appendChild(div);
-          container.appendChild(col);
-        });
-      });
-  </script>
+ 
   </section>
 
+<script>
+  fetch("obras.json")
+    .then(response => response.json())
+    .then(obras => {
+      const container = document.getElementById("obras-container");
+      obras.forEach(obra => {
+        const card = document.createElement("div");
+        card.className = "obra-card";
+
+        const imagen = document.createElement("img");
+        imagen.src = "img/" + obra.image;
+        imagen.alt = obra.title;
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = obra.title;
+
+        const descripcion = document.createElement("p");
+        descripcion.textContent = obra.description;
+
+        const boton = document.createElement("button");
+        boton.textContent = "Ver más";
+        boton.classList.add("volver-btn");
+        boton.addEventListener("click", () => {
+          localStorage.setItem("obraSeleccionada", JSON.stringify(obra));
+          window.location.href = "detalle.html";
+        });
+
+        card.appendChild(imagen);
+        card.appendChild(titulo);
+        card.appendChild(descripcion);
+        card.appendChild(boton);
+        container.appendChild(card);
+      });
+    });
+</script>
 
 
 </body>
