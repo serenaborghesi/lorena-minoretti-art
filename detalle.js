@@ -24,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Armamos el slider de imágenes
-      const carrusel = obra.imagenes.map((src, index) => `
-        <img src="${src}" alt="Imagen ${index + 1} de ${obra.nombre}" style="width: 100%; max-width: 600px; margin-bottom: 1rem;" />
-      `).join("");
+      const carrusel = `<img src="${obra.imagen}" alt="${obra.nombre}" style="width: 100%; max-width: 600px; margin-bottom: 1rem;" />`;
+
 
       mainContainer.innerHTML = `
         <div class="detalle-obra">

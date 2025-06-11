@@ -2,89 +2,276 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detalle de Obra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalle de Obra - Lorena Minoretti Art</title>
 
-  <!-- Estilos propios -->
-  <link rel="stylesheet" href="styles.css" />
-  
-  <!-- Fuente Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+
+
+  <!-- Fuente Montserrat y Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet" />
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-<header>
-  <div class="container">
-    <h1 class="logo">Lorena Minoretti Art</h1>
-    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">☰</button>
-    <ul class="nav-menu" id="nav">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="quien_soy.html">Quién soy</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-  </div>
-</header>
 
-  <main class="container my-4">
-    <a href="index.html" class="volver-btn">&larr; Volver a la galería</a>
-    
-    <!-- Contenedor dinámico -->
-    <div id="main-container"></div>
-  </main>
+  <style>
+    /* Reset y base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #e6f0e9; /* Verde muy claro */
+      color: #333;
+      line-height: 1.6;
+      padding-top: 70px; /* espacio para header fijo */
+    }
 
-  <!-- JS propio -->
-  <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mainContainer = document.getElementById("main-container");
+    /* Header fijo */
+    header {
+      background-color: #a3d9c1; /* verde suave */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1030;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-      // Traer la obra guardada en localStorage
-      const obra = JSON.parse(localStorage.getItem("obraSeleccionada"));
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #204030;
+      user-select: none;
+    }
 
-      // Validación por si no se encuentra
-      if (!obra) {
-        mainContainer.innerHTML = "<p>No se encontró la obra seleccionada.</p>";
-        return;
+    /* Navbar */
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: #204030;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu li a:hover,
+    .nav-menu li a:focus {
+      color: #4caf50;
+    }
+
+    /* Botón menú hamburguesa */
+    #menu-toggle {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #204030;
+      display: none; /* oculto en desktop */
+    }
+
+    /* Responsive - menú hamburguesa */
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 220px;
+        height: calc(100% - 60px);
+        background-color: #a3d9c1;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1040;
       }
 
-      // Generar carrusel si hay imágenes
-      const carrusel = obra.images && obra.images.length > 0 ? `
-        <div id="carouselObra" class="carousel slide mb-4" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            ${obra.images.map((img, index) => `
-              <div class="carousel-item ${index === 0 ? "active" : ""}">
-                <img src="img/${img}" class="d-block w-100" style="max-height: 500px; object-fit: contain;" alt="Imagen ${index + 1}" />
-              </div>`).join("")}
-          </div>
+      .nav-menu.open {
+        right: 0;
+      }
 
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselObra" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselObra" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-          </button>
+      #menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Botón volver */
+    .volver-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #204030;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #204030;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .volver-btn:hover,
+    .volver-btn:focus {
+      background-color: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
+
+    /* Contenedor principal */
+    main.container {
+      max-width: 900px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Carrusel */
+    .carousel-item img {
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 8px;
+      user-select: none;
+    }
+
+    /* Detalles obra */
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #204030;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    p strong {
+      color: #4caf50;
+      font-weight: 700;
+    }
+
+    /* Botón WhatsApp */
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(37, 211, 102, 0.4);
+    }
+
+    .btn-whatsapp:hover,
+    .btn-whatsapp:focus {
+      background-color: #128c4a;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(18, 140, 74, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 class="logo">Lorena Minoretti Art</h1>
+  <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+  <ul class="nav-menu" id="nav">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="quien_soy.html">Quién soy</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</header>
+
+<main class="container my-4">
+  <a href="index.html" class="volver-btn">&larr; Volver a la galería</a>
+
+  <!-- Contenedor dinámico -->
+  <div id="main-container"></div>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<!-- JS propio -->
+<script defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mainContainer = document.getElementById("main-container");
+
+    // Traer la obra guardada en localStorage
+    const obra = JSON.parse(localStorage.getItem("obraSeleccionada"));
+
+    // Validación por si no se encuentra
+    if (!obra) {
+      mainContainer.innerHTML = "<p>No se encontró la obra seleccionada.</p>";
+      return;
+    }
+
+    // Generar carrusel si hay imágenes
+    const carrusel = obra.images && obra.images.length > 0 ? `
+      <div id="carouselObra" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          ${obra.images.map((img, index) => `
+            <div class="carousel-item ${index === 0 ? "active" : ""}">
+              <img src="img/${img}" class="d-block w-100" alt="Imagen ${index + 1}" />
+            </div>`).join("")}
         </div>
-      ` : "";
 
-      // Armar el HTML completo
-      mainContainer.innerHTML = `
-        ${carrusel}
-        <h2>${obra.title}</h2>
-        <p><strong>Año:</strong> ${obra.year}</p>
-        <p><strong>Técnica:</strong> ${obra.technique}</p>
-        <p><strong>Precio:</strong> $${obra.price}</p>
-        <p>${obra.description}</p>
-      `;
-    });
-  </script>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselObra" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselObra" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+    ` : "";
 
-  <div class="main-container"></div>
+    // Armar el HTML completo
+    mainContainer.innerHTML = `
+      ${carrusel}
+      <h2>${obra.title}</h2>
+      <p><strong>Año:</strong> ${obra.year}</p>
+      <p><strong>Técnica:</strong> ${obra.technique}</p>
+      <p><strong>Precio:</strong> $${obra.price}</p>
+      <p>${obra.description}</p>
+      <a href="https://wa.me/5491134888990?text=Hola%20Lorena,%20estoy%20interesado/a%20en%20la%20obra%20'${encodeURIComponent(obra.title)}'.%20¿Podrías%20contarme%20más?" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="btn-whatsapp">
+         Consultar por WhatsApp
+      </a>
+    `;
+  });
+
+  // Toggle menú hamburguesa
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("nav").classList.toggle("open");
+  });
+</script>
 
 </body>
 </html>
