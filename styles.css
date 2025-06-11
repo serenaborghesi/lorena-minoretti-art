@@ -213,25 +213,24 @@ img.img-fluid {
   cursor: pointer;
 }
 
-/* Control previo */
 .carousel-control-prev {
   width: 60px;
   height: 60px;
   top: 50%;
-  left: 15px; /* separo más del borde */
-  transform: translateY(350%);
+  left: 15px; /* ok */
+  transform: translateY(-50%); /* centrar verticalmente (reemplazar translateY(350%)) */
   z-index: 1050;
 }
 
-/* Control siguiente */
 .carousel-control-next {
   width: 60px;
   height: 60px;
   top: 50%;
-  right: 15px; /* separo más del borde */
-  transform: translateY(350%);
+  right: 15px; /* ok */
+  transform: translateY(-50%); /* centrar verticalmente */
   z-index: 1050;
 }
+
 
 /* Carrusel contenedor y título */
 .galeria-carrusel {
@@ -240,6 +239,7 @@ img.img-fluid {
   margin-bottom: 2rem;
   text-align: center;
 }
+
 
 .galeria-carrusel .titulo {
   font-size: 2rem;
