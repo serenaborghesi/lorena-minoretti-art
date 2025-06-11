@@ -50,7 +50,7 @@ header {
 }
 
 /* Navegación */
-.nav {
+.nav-menu {
   display: none;
   flex-direction: column;
   background-color: white;
@@ -62,16 +62,16 @@ header {
   z-index: 1000;
 }
 
-.nav.show {
+.nav-menu.show {
   display: flex;
 }
 
-.nav li {
+.nav-menu li {
   list-style: none;
   padding: 10px 20px;
 }
 
-.nav li a {
+.nav-menu li a {
   color: white;
   background-color: rgb(36, 132, 76);
   text-decoration: none;
@@ -84,13 +84,13 @@ header {
   text-align: center;
 }
 
-.nav li a:hover {
+.nav-menu li a:hover {
   text-decoration: underline;
   color: #fdfffd;
 }
 
 @media (min-width: 768px) {
-  .nav {
+  .nav-menu {
     display: flex !important;
     position: static;
     flex-direction: row;
