@@ -1,58 +1,18 @@
 [
   {
-    "title": "Paisaje en otoño",
-    "description": "Una pintura que captura los colores cálidos del otoño.",
-    "year": 2022,
-    "technique": "Óleo sobre lienzo",
-    "price": 1500,
-    "image": "paisaje-otono.jpg",
-    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
-
+    "id": 1,
+    "nombre": "Atardecer en calma",
+    "precio": "$15.000",
+    "imagen": "imagenes/obra1.jpg",
+    "descripcion": "Obra abstracta en tonos cálidos.",
+    "tamaño": "50x70 cm"
   },
   {
-    "title": "Retrato abstracto",
-    "description": "Obra que explora formas y colores en un retrato no tradicional.",
-    "year": 2023,
-    "technique": "Acrílico sobre tela",
-    "price": 1200,
-    "image": "retrato-abstracto.jpg",
-    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
-
-  },
-  {
-    "title": "TérrAq",
-    "description": "Juego de mesa de estrategia sobre especies y medioambiente. Con sus ilustraciones dibujadas íntegramente a mano, su diseño y textos sobre cuestiones ambientales del planeta, este juego de mesa ha obtenido la Mención al Sello Buen Diseño argentino.",
-    "year": 2022,
-    "technique": "Juego de mesa",
-    "price": 90000,
-    "image": "terraq1.jpg",
-    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
-  },
-  {
-    "title": "Probando",
-    "description": "Obra que explora formas y colores en un retrato no tradicional.",
-    "year": 2022,
-    "technique": "Juego de mesa",
-    "price": 90000,
-    "image": "terraq1.jpg",
-    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
-  },
-  {
-    "title": "Hola",
-    "description": "Probando 123.",
-    "year": 2022,
-    "technique": "Juego de mesa",
-    "price": 90000,
-    "image": "terraq1.jpg",
-    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
-  },
-  {
-    "title": "Buhos",
-    "description": "En TérrAq el objetivo es hallar acciones ecológicas destinadas a rescatar a las especies vulnerables y sus hábitats en peligro. Usando estrategia será posible convertirse en guardián de regiones marinas y continentales, ocupar santuarios, avanzar por los caminos de biodiversidad y finalmente cumplir la misión..",
-    "year": 2022,
-    "technique": "Juego de mesa",
-    "price": 90000,
-    "image": "terraq1.jpg",
-    "images": ["terraq1.jpg", "terraq2.jpg", "terraq3.jpg"]
+    "id": 2,
+    "nombre": "Mar en movimiento",
+    "precio": "$18.000",
+    "imagen": "imagenes/obra2.jpg",
+    "descripcion": "Inspirada en paisajes oceánicos.",
+    "tamaño": "60x80 cm"
   }
 ]

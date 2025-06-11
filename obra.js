@@ -1,55 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const grilla = document.getElementById("grilla-obras");
-  if (!grilla) return;
+  const contenedor = document.getElementById("contenedor-obras");
 
-  grilla.innerHTML = "";
+  if (!contenedor) {
+    console.error("No se encontró el contenedor de obras");
+    return;
+  }
 
-  const obras = [
-    {
-      id: 1,
-      nombre: "Abstracción Verde",
-      precio: "$8.000",
-      descripcion: "Obra en acuarela inspirada en la naturaleza.",
-      tamano: "30x40 cm",
-      imagenes: [
-        "img/obra1a.jpg",
-        "img/obra1b.jpg"
-      ]
-    },
-    {
-      id: 2,
-      nombre: "Cielo Turquesa",
-      precio: "$10.000",
-      descripcion: "Tonos celestes y turquesas en una composición aérea.",
-      tamano: "40x50 cm",
-      imagenes: [
-        "img/obra2a.jpg",
-        "img/obra2b.jpg"
-      ]
-    },
-    {
-      id: 3,
-      nombre: "Horizonte Acuático",
-      precio: "$9.500",
-      descripcion: "Evocación del mar con acuarelas suaves.",
-      tamano: "35x45 cm",
-      imagenes: [
-        "img/obra3a.jpg",
-        "img/obra3b.jpg"
-      ]
-    }
-  ];
+  fetch("obras.json")
+    .then((response) => response.json())
+    .then((obras) => {
+      contenedor.innerHTML = "";
+      obras.forEach((obra) => {
+        const obraDiv = document.createElement("div");
+        obraDiv.classList.add("obra");
 
-  obras.forEach((obra) => {
-    grilla.innerHTML += `
-      <div class="obra-card">
-        <img src="${obra.imagenes[0]}" alt="${obra.nombre}" />
-        <div class="obra-info">
+        obraDiv.innerHTML = `
+          <img src="${obra.imagen}" alt="${obra.nombre}" />
           <h3>${obra.nombre}</h3>
-          <p class="precio">${obra.precio}</p>
-          <a class="ver-mas" href="obra.html?id=${obra.id}">Ver más</a>
-        </div>
-      </div>
-    `;
-  });
+          <p>${obra.precio}</p>
+          <a href="detalle.html?id=${obra.id}">Ver más</a>
+        `;
+        contenedor.appendChild(obraDiv);
+      });
+    })
+    .catch((error) => {
+      console.error("Error al cargar las obras:", error);
+      contenedor.innerHTML = "<p>Error al cargar las obras.</p>";
+    });
 });
