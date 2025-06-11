@@ -13,14 +13,13 @@
 
 <header>
   <h1>Lorena Minoretti Art</h1>
-  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+  <button id="menu-toggle" class="menu-toggle">☰</button>
   <ul class="nav">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="quien_soy.html">Quién soy</a></li>
     <li><a href="contacto.html">Contacto</a></li>
   </ul>
 </header>
-
 
 
   <section class="galeria-carrusel py-4">
@@ -102,6 +101,18 @@
       });
     });
 </script>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.querySelector('.nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
+
+
+
 
 
 </body>
