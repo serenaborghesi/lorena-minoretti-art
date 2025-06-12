@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const obras = [
     {
-      title: "Reflejos del Alma",
+      title: "Libro de Búhos y Lechuzas",
       year: 2023,
-      technique: "Óleo sobre lienzo",
-      price: 25000,
-      description: "Una mirada introspectiva al color y la emoción.",
+      technique: "Libro",
+      price: 50000,
+      description: "Libro de búhos, lechuzas, flores y plumas. Hecho con acuarela y tinta",
       images: ["obra1a.jpg", "obra1b.jpg"]
     },
     {
