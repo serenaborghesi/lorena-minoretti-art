@@ -25,6 +25,30 @@ document.addEventListener("DOMContentLoaded", () => {
       price: 90000,
       description: "Juego de mesa de estrategia sobre especies y medioambiente. Con sus ilustraciones dibujadas íntegramente a mano, su diseño y textos sobre cuestiones ambientales del planeta, este juego de mesa ha obtenido la Mención al Sello Buen Diseño argentino.",
       images: ["obra3a.jpg", "obra3b.jpg"]
+    },
+    {
+      title: "Zorro",
+      year: 2024,
+      technique: "Juego de Mesa",
+      price: 90000,
+      description: "Pintura zorro con acrílico.",
+      images: ["obra3a.jpg", "obra3b.jpg"]
+    },
+    {
+      title: "Conejo",
+      year: 2024,
+      technique: "Juego de Mesa",
+      price: 90000,
+      description: "Pintura zorro con acrílico.",
+      images: ["obra3a.jpg", "obra3b.jpg"]
+    },
+    {
+      title: "Tortuga",
+      year: 2024,
+      technique: "Juego de Mesa",
+      price: 90000,
+      description: "Pintura zorro con acrílico.",
+      images: ["obra3a.jpg", "obra3b.jpg"]
     }
   ];
 
