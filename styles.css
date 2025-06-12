@@ -5,7 +5,16 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
   background-color: #e6f0e9; /* Verde muy claro */
   color: #333;
@@ -247,4 +256,8 @@ body {
   font-weight: bold;
   color: #4caf50;
   margin-bottom: 10px;
+}
+
+main {
+  flex: 1;
 }
