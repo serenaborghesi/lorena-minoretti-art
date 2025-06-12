@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       technique: "Acrílico",
       price: 18000,
       description: "La calma de un paisaje abstracto.",
-      images: ["obra2a.jpg"]
+      images: ["obra2a.jpg", "obra2b.jpg"]
     },
     {
       title: "TerrÁq",
