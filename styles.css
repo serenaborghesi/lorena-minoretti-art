@@ -94,75 +94,66 @@ body {
   transform: scale(1.05);
 }
 
-/* Obras Grid */
+/* Obras Grid + Card estética */
 .obras-grid {
   max-width: 1100px;
   margin: 40px auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
   padding: 0 15px;
 }
 
 .obra-card {
-  background: linear-gradient(145deg, #f2fdf8, #dff1e6);
+  font-family: 'Playfair Display', serif;
+  background-color: #e6f2eb;
   border-radius: 16px;
-  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: center;
+  padding: 15px;
 }
 
 .obra-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
 }
 
 .obra-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 1px solid #cce8dc;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.obra-info {
-  padding: 18px;
-  text-align: center;
-}
-
-.obra-info h3 {
-  font-family: 'Playfair Display', serif;
+  border-radius: 10px;
   margin-bottom: 10px;
-  color: #204030;
-  font-size: 1.3rem;
 }
 
-.precio {
+.obra-card h3 {
+  font-size: 1.3rem;
+  color: #204030;
+  margin-bottom: 8px;
+}
+
+.obra-card .precio {
   font-weight: 700;
   color: #4caf50;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-size: 1rem;
 }
 
-.ver-mas {
+.obra-card .ver-mas {
   text-decoration: none;
-  background-color: #a3d9c1;
-  color: #204030;
-  padding: 10px 14px;
-  border-radius: 6px;
+  background-color: #76b39d;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
   font-weight: 600;
   display: inline-block;
-  transition: background-color 0.3s ease;
   font-size: 0.95rem;
+  transition: background-color 0.3s ease;
 }
 
-.ver-mas:hover {
-  background-color: #4caf50;
-  color: white;
+.obra-card .ver-mas:hover {
+  background-color: #5d9d86;
 }
 
 /* Footer */
