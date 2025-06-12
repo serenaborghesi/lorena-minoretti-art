@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
       images: ["obra1a.jpg", "obra1b.jpg"]
     },
     {
-      title: "Horizonte Infinito",
+      title: "Pingüinos",
       year: 2022,
       technique: "Acrílico",
       price: 18000,
-      description: "La calma de un paisaje abstracto.",
+      description: "Obra pingüinos.",
       images: ["obra2a.jpg", "obra2b.jpg"]
     },
     {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       technique: "Juego de Mesa",
       price: 90000,
       description: "Juego de mesa de estrategia sobre especies y medioambiente. Con sus ilustraciones dibujadas íntegramente a mano, su diseño y textos sobre cuestiones ambientales del planeta, este juego de mesa ha obtenido la Mención al Sello Buen Diseño argentino.",
-      images: ["obra3a.jpg", "obra3b.jpg"]
+      images: ["obra3a.jpg", "obra3b.jpg", "obra3c.jpg", "obra3d.jpg"]
     },
     {
       title: "Zorro",
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       technique: "Juego de Mesa",
       price: 90000,
       description: "Pintura zorro con acrílico.",
-      images: ["obra5a.jpg", "obra5b.jpg"]
+      images: ["obra6a.jpg", "obra6b.jpg"]
     }
   ];
 
