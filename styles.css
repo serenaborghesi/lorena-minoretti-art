@@ -219,6 +219,21 @@ body {
 
   .obras-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px; /* menos espacio para que quede más compacto */
+  }
+
+  .obra-card {
+    height: auto; /* quitar altura fija */
+    display: flex;
+    flex-direction: column; /* para ordenar contenido vertical */
+  }
+
+  .obra-card img {
+    aspect-ratio: 1 / 1; /* hace la imagen cuadrada */
+    height: auto; /* que se ajuste según aspect-ratio */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-fit: cover;
   }
 }
 
