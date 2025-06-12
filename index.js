@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
       images: ["obra2a.jpg"]
     },
     {
-      title: "Sueños Suspendidos",
+      title: "TerrÁq",
       year: 2024,
-      technique: "Mixta",
-      price: 32000,
-      description: "Obra de técnica mixta inspirada en lo onírico.",
+      technique: "Juego de Mesa",
+      price: 90000,
+      description: "Juego de mesa de estrategia sobre especies y medioambiente. Con sus ilustraciones dibujadas íntegramente a mano, su diseño y textos sobre cuestiones ambientales del planeta, este juego de mesa ha obtenido la Mención al Sello Buen Diseño argentino.",
       images: ["obra3a.jpg", "obra3b.jpg"]
     }
   ];

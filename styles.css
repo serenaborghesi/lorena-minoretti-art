@@ -112,6 +112,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .obra-card:hover {
@@ -129,31 +130,34 @@ body {
 }
 
 .obra-info {
-  padding: 15px;
+  padding: 18px;
+  text-align: center;
 }
 
 .obra-info h3 {
   font-family: 'Playfair Display', serif;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #204030;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .precio {
   font-weight: 700;
   color: #4caf50;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 1rem;
 }
 
 .ver-mas {
   text-decoration: none;
   background-color: #a3d9c1;
   color: #204030;
-  padding: 8px 12px;
-  border-radius: 5px;
+  padding: 10px 14px;
+  border-radius: 6px;
   font-weight: 600;
   display: inline-block;
   transition: background-color 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .ver-mas:hover {
@@ -211,6 +215,10 @@ body {
 
   .carousel-images {
     overflow-x: scroll;
+  }
+
+  .obras-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
