@@ -29,18 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "Zorro",
       year: 2024,
-      technique: "Juego de Mesa",
+      technique: "Dibujo zorro de TerrÁq",
       price: 90000,
-      description: "Pintura zorro con acrílico.",
-      images: ["obra3a.jpg", "obra3b.jpg"]
+      description: "Pintura zorro hecho con lapiz acuarelable.",
+      images: ["obra4a.jpg", "obra4b.jpg"]
     },
     {
-      title: "Conejo",
+      title: "Leon",
       year: 2024,
-      technique: "Juego de Mesa",
+      technique: "Dibujo Leon.",
       price: 90000,
-      description: "Pintura zorro con acrílico.",
-      images: ["obra3a.jpg", "obra3b.jpg"]
+      description: "Dibujo Leon.",
+      images: ["obra5a.jpg", "obra5b.jpg"]
     },
     {
       title: "Tortuga",
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       technique: "Juego de Mesa",
       price: 90000,
       description: "Pintura zorro con acrílico.",
-      images: ["obra3a.jpg", "obra3b.jpg"]
+      images: ["obra5a.jpg", "obra5b.jpg"]
     }
   ];
 
